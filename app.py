@@ -15,5 +15,8 @@ def users():
 @app.route("/user/<username>")
 def user(username):
     return f"heloo {username}"
+@app.route("/student/<username>/<course>")
+def student(username,course):
+    return f"heloo {username} you take {course} course"
 if __name__=='__main__':
     app.run(debug=True)
