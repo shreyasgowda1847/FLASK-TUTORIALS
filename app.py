@@ -1,22 +1,40 @@
-from flask import Flask
+from flask import Flask,request
 app=Flask(__name__)
 @app.route('/')
 def hello_world():
-    return 'Hello Man!'
+    return 'Hello home!'
 @app.route("/about")
 def about():
     return "About me"
 @app.route("/contact")
 def contact():
     return "Contact me"
-@app.route("/users")
-def users():
-    return "Users page"
-@app.route("/user/<username>")
-def user(username):
-    return f"heloo {username}"
-@app.route("/student/<username>/<course>")
-def student(username,course):
-    return f"heloo {username} you take {course} course"
+"""int  converter"""
+@app.route("/name/<int:age>")
+def name(age):
+    return f"your age {age}"
+
+"""float  converter"""
+@app.route("/price/<float:amount>")
+def price(amount):
+    return f"your amount{amount}"
+
+"""string(default)  converter"""
+@app.route("/view/<string:you>")
+def view(you):
+    return f"your name {you}"
+
+"""UUID converter"""
+@app.route("/unique/<uuid:you>")
+def unique(you):
+    return f"UUID:{you}"
+
+"""query arguments"""
+@app.route("/search")
+def search():
+    names=request.args.get("names","guest")
+    return f"your name {names}"
+
+
 if __name__=='__main__':
     app.run(debug=True)
