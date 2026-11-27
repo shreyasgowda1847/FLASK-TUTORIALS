@@ -1,8 +1,9 @@
-from flask import Flask,request
+from flask import Flask, request, render_template
+
 app=Flask(__name__)
 @app.route('/')
 def hello_world():
-    return 'Hello home!'
+    return render_template("index.html")
 @app.route("/about")
 def about():
     return "About me"
@@ -33,7 +34,8 @@ def unique(you):
 @app.route("/search")
 def search():
     names=request.args.get("names","guest")
-    return f"your name {names}"
+    course=request.args.get("course","unknown")
+    return f"your name {names} course {course}"
 
 
 if __name__=='__main__':
