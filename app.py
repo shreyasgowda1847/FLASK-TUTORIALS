@@ -3,7 +3,13 @@ from flask import Flask, request, render_template
 app=Flask(__name__)
 @app.route('/')
 def hello_world():
-    return render_template("index.html")
+    name="shreyas"
+    age=12
+    place="maradahalli"
+    first="shreyas"
+    last=" raj"
+    price=10000
+    return render_template("index.html",name=name,age=age,place=place,first=first,last=last,price=price)
 @app.route("/about")
 def about():
     return "About me"
