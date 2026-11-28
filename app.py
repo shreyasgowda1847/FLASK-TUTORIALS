@@ -42,11 +42,16 @@ app=Flask(__name__)
 #     names=request.args.get("names","guest")
 #     course=request.args.get("course","unknown")
 #     return f"your name {names} course {course}"
+# @app.route("/")
+# def index():
+#     is_logging=True
+#     marks=80
+#     return render_template("index.html",is_logging=is_logging,marks=marks)
 @app.route("/")
-def index():
-    is_logging=True
-    marks=80
-    return render_template("index.html",is_logging=is_logging,marks=marks)
+def home():
+    courses=["python","flask","ai/ml","ds"]
+    student={"name":"shreyas","age":18,"course":"python"}
+    return render_template("index.html",courses=courses,student=student)
 
 
 if __name__=='__main__':
